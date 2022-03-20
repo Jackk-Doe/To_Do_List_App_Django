@@ -54,7 +54,7 @@ class TaskList(LoginRequiredMixin, ListView):   #Auto look for html (template) f
         context['tasks'] = context['tasks'].filter(user=self.request.user)
         context['count'] = context['tasks'].filter(complete=False).count()
 
-        #IF User trigger search bar, get data from GET, else '' (empty)
+        #IF User clicked in search bar, trigger SEARCH function, get data from GET, else '' (empty)
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
             context['tasks'] = context['tasks'].filter(title__icontains=search_input)
